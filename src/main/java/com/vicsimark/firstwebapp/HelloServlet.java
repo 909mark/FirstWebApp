@@ -10,8 +10,7 @@ import jakarta.servlet.annotation.*;
 
 @WebServlet(name = "helloServlet", value = "/hello-servlet")
 public class HelloServlet extends HttpServlet {
-
-    protected transient Logger logger = Logger.getLogger(HelloServlet.class.getSimpleName());
+    
     private Map<String, User> users;
 
     @Override
