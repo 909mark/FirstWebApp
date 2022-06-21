@@ -1,49 +1,51 @@
 package com.vicsimark.firstwebapp;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vicsimark.firstwebapp.data.User;
 import jakarta.servlet.http.HttpServletRequest;
-
+import java.io.IOException;
 import java.util.Map;
+import java.util.stream.Collectors;
 
+// is this even a "response" factory?
 public class ResponseFactory {
 
-    // is this even a "response" factory?
-    private ResponseFactory() {}
-    public static String getOutputText(HttpServletRequest request, Map<String, User> userMap) {
+    private static final String JSON_TYPE = "application/json";
 
+    private ResponseFactory() {}
+
+    public static String getOutputText(HttpServletRequest request, Map<String, User> userMap) throws IOException {
+
+        if(!JSON_TYPE.equals(request.getHeader("content-type"))) {
+            return "Not supported content-type, must be json";
+        }
+
+        String requestBody = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
+        //System.out.println(requestBody);
         String operationType = request.getParameter("op-type");
-        String username = request.getParameter("username");
+        ObjectMapper objectMapper = new ObjectMapper();
+        User newUser = objectMapper.readValue(requestBody, User.class);
+        String username = newUser.getUsername();
+        //System.out.println("new User= " + newUser);
 
         if (operationType == null) {
-            return "Unknown operation type, only add/list/delete/edit supported";
+            return "No operation type specified, only add/list/delete/edit supported";
         } else if ("add".equals(operationType)) {
             if (userMap.containsKey(username)) {
                 return "User already exists";
             }
-            userMap.put(username, new User(
-                    username,
-                    request.getParameter("property1"),
-                    request.getParameter("property2"),
-                    request.getParameter("property3")
-            ));
+            userMap.put(username, newUser);
         } else if ("delete".equals(operationType)) {
-            userMap.remove(request.getParameter("username"));
+            userMap.remove(username);
         } else if ("edit".equals(operationType)) {
             if(!userMap.containsKey(username)) {
                 return "No user found with username \"" + username + "\"";
             }
             userMap.remove(username);
-            userMap.put(username, new User(
-                    username,
-                    request.getParameter("property1"),
-                    request.getParameter("property2"),
-                    request.getParameter("property3")
-            ));
+            userMap.put(username, newUser);
         }
 
-        StringBuilder outputText = new StringBuilder();
-        userMap.forEach((key, entry) -> outputText.append(entry).append("\n"));
-        return outputText.toString();
+        return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(userMap.values());
     }
 
 }

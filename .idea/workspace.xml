@@ -10,7 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="524474d4-3c96-4c0a-9449-ac225f982446" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/FirstWebApp_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/FirstWebApp_war_exploded.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/vicsimark/firstwebapp/HelloServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vicsimark/firstwebapp/HelloServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vicsimark/firstwebapp/ResponseFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vicsimark/firstwebapp/ResponseFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vicsimark/firstwebapp/data/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vicsimark/firstwebapp/data/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +64,10 @@
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
     "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "C:/Users/bastard/IdeaProjects/FirstWebApp",
-    "nodejs_package_manager_path": "npm"
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
   }
 }]]></component>
   <component name="RunManager">
@@ -164,7 +171,7 @@
       <option name="presentableId" value="Default" />
       <updated>1655792391927</updated>
       <workItem from="1655792394430" duration="5988000" />
-      <workItem from="1655806788598" duration="7103000" />
+      <workItem from="1655806788598" duration="14243000" />
     </task>
     <task id="LOCAL-00001" summary="add gitignore">
       <created>1655817536309</created>
@@ -180,7 +187,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655817714659</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="delete unused logger">
+      <created>1655817915312</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1655817915312</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -200,6 +214,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add gitignore" />
     <MESSAGE value="init commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="init commit" />
+    <MESSAGE value="delete unused logger" />
+    <option name="LAST_COMMIT_MESSAGE" value="delete unused logger" />
   </component>
 </project>

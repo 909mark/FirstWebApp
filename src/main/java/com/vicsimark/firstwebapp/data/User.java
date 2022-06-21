@@ -4,10 +4,9 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class User implements Serializable {
-    private String name;
-    private String property1;
-    private String property2;
-    private String property3;
+    private String username;
+    private String email;
+    private String password;
 
     @Override
     public boolean equals(Object o) {
@@ -16,67 +15,57 @@ public class User implements Serializable {
 
         User user = (User) o;
 
-        if (!Objects.equals(name, user.name)) return false;
-        if (!Objects.equals(property1, user.property1)) return false;
-        if (!Objects.equals(property2, user.property2)) return false;
-        return Objects.equals(property3, user.property3);
+        if (!Objects.equals(username, user.username)) return false;
+        if (!Objects.equals(email, user.email)) return false;
+        return Objects.equals(password, user.password);
     }
 
     @Override
     public int hashCode() {
-        int result = name != null ? name.hashCode() : 0;
-        result = 31 * result + (property1 != null ? property1.hashCode() : 0);
-        result = 31 * result + (property2 != null ? property2.hashCode() : 0);
-        result = 31 * result + (property3 != null ? property3.hashCode() : 0);
+        int result = username != null ? username.hashCode() : 0;
+        result = 31 * result + (email != null ? email.hashCode() : 0);
+        result = 31 * result + (password != null ? password.hashCode() : 0);
         return result;
     }
 
-    public User(String name, String property1, String property2, String property3) {
-        this.name = name;
-        this.property1 = property1;
-        this.property2 = property2;
-        this.property3 = property3;
+    public User() {}
+
+    public User(String username, String email, String password) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getProperty1() {
-        return property1;
+    public String getEmail() {
+        return email;
     }
 
-    public void setProperty1(String property1) {
-        this.property1 = property1;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getProperty2() {
-        return property2;
+    public String getPassword() {
+        return password;
     }
 
-    public void setProperty2(String property2) {
-        this.property2 = property2;
-    }
-
-    public String getProperty3() {
-        return property3;
-    }
-
-    public void setProperty3(String property3) {
-        this.property3 = property3;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "name='" + name + '\'' +
-                ", property1='" + property1 + '\'' +
-                ", property2='" + property2 + '\'' +
-                ", property3='" + property3 + '\'' +
+                "username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 }
