@@ -3,6 +3,8 @@ package com.vicsimark.firstwebapp;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vicsimark.firstwebapp.data.User;
 import jakarta.servlet.http.HttpServletRequest;
+
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -45,7 +47,9 @@ public class ResponseFactory {
             userMap.put(username, newUser);
         }
 
-        return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(userMap.values());
+        String responseString = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(userMap.values());
+        System.out.println("response =" + responseString);
+        return responseString;
     }
 
 }
