@@ -5,8 +5,6 @@ import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.stream.Collectors;
-import java.util.zip.GZIPOutputStream;
 
 @WebFilter(filterName = "GZIP-CompressionFilter")
 public class CompressionFilter implements Filter {
@@ -43,16 +41,13 @@ public class CompressionFilter implements Filter {
 
             chain.doFilter(request, wrappedResponse);
 
-            System.out.println("wrapped response= ");
-            wrappedResponse.getOutputStream().println();
-
-            GZIPOutputStream gzipOutputStream = wrappedResponse.getGZIPOutputStream();
             // flush the GZIP stream, send all of its data to the original response stream
-            gzipOutputStream.finish();
+            wrappedResponse.finish();
 
             context.log(config.getFilterName() + ": finished the request.");
         } else {
             context.log(config.getFilterName() + ": no encoding performed.");
+            chain.doFilter(request, response);
         }
     }
 }
